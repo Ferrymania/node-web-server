@@ -1,7 +1,7 @@
 const express = require('express');
 const hbs = require('hbs');
 const fs = require('fs');
-
+const port = process.env.PROT || 3000;
 
 var app = express();
 app.set('view engine','hbs');
@@ -29,9 +29,9 @@ app.use((req,res,next)=>{
     next();
 });
 
-app.use((req,res,next)=>{
-    res.render('maintenence.hbs');
-});
+// app.use((req,res,next)=>{
+//     res.render('maintenence.hbs');
+// });
 
 
 app.get('/',(req,res)=>{
@@ -51,6 +51,6 @@ app.get('/bad',(req,res)=>{
     res.send('<h1>It seems you get bad url</h1>');
 });
 
-app.listen(3000,()=>{
-    console.log('app listening on port 3000');
+app.listen(port,()=>{
+    console.log(`app listening on port ${port}`);
 });
